@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  tripproof:
+    build: .
+    container_name: tripproof-app
+    ports:
+      - "7860:7860"
+    environment:
+      - PORT=7860
+      - HOST=0.0.0.0
+      - DEBUG=False
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-AIzaSyAi2ufjSBUXAS9UwNPGcOt2t3tyoSmQqRk}
+    volumes:
+      - ./storage:/app/storage
+    restart: unless-stopped
